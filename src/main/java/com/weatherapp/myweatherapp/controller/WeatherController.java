@@ -24,6 +24,15 @@ public class WeatherController {
 
   // TODO: given two city names, compare the length of the daylight hours and return the city with the longest day
 
+  @GetMapping("/forecast/compare/daylight/{city1}/{city2}")
+  public ResponseEntity<CityInfo> compareForecast(
+    @PathVariable("city1") String city1,
+    @PathVariable("city2") String city2
+    ) {
+    CityInfo ci1 = weatherService.forecastByCity(city1);
+    CityInfo ci2 = weatherService.forecastByCity(city2);
+    CityInfo returnCity = weatherService.compareDaylight(ci1, ci2);
+    return ResponseEntity.ok(returnCity);
+  }
   // TODO: given two city names, check which city its currently raining in
-
 }

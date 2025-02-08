@@ -17,7 +17,22 @@ public class CityInfo {
   @JsonProperty("days")
   List<Days> days;
 
-  static class CurrentConditions {
+  public String getAddress() {
+    return address;
+  }
+
+  public String getDescription() {
+      return description;
+  }
+
+  public CurrentConditions getCurrentConditions() {
+      return currentConditions;
+  }
+
+  public List<Days> getDays() {
+      return days;
+  }
+  public class CurrentConditions {
     @JsonProperty("temp")
     String currentTemperature;
 
@@ -35,6 +50,30 @@ public class CityInfo {
 
     @JsonProperty("conditions")
     String conditions;
+
+    public String getCurrentTemperature() {
+      return currentTemperature;
+    }
+
+    public String getsunrise() {
+      return sunrise;
+    }
+
+    public String getsunset() {
+      return sunset;
+    }
+
+    public String getfeelslike() {
+      return feelslike;
+    }
+
+    public String gethumidity() {
+      return humidity;
+    }
+
+    public String getconditions() {
+      return conditions;
+    }
   }
 
   static class Days {
