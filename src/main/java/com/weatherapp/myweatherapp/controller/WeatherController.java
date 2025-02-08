@@ -22,7 +22,7 @@ public class WeatherController {
     return ResponseEntity.ok(ci);
   }
 
-  @GetMapping("/forecast/compare/daylight/{city1}/{city2}")
+  @GetMapping("/forecast/{city1}/{city2}")
   public ResponseEntity<CityInfo> compareForecast(
     @PathVariable("city1") String city1,
     @PathVariable("city2") String city2

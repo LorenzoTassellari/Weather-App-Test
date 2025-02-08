@@ -19,7 +19,7 @@ public class WeatherService {
     return weatherRepo.getByCity(city);
   }
 
-  public int[] getDaylight(CityInfo city) {
+  public int[] getDaylightHours(CityInfo city) {
 
     String[] sunrise = city.getCurrentConditions().getsunrise().split(":");
     String[] sunset = city.getCurrentConditions().getsunset().split(":");
@@ -34,7 +34,6 @@ public class WeatherService {
         daylightHours[i] = daylightHours[i] + 60;
         daylightHours[i - 1] = daylightHours[i - 1] - 1;
 
-
       }
     }
 
@@ -43,8 +42,8 @@ public class WeatherService {
 
   public CityInfo compareDaylight(CityInfo city1, CityInfo city2) {
 
-    int[] daylightHours1 = getDaylight(city1);
-    int[] daylightHours2 = getDaylight(city2);
+    int[] daylightHours1 = getDaylightHours(city1);
+    int[] daylightHours2 = getDaylightHours(city2);
 
     for (int i = 0; i < 3; i++) {
 
@@ -58,6 +57,6 @@ public class WeatherService {
         return city2;
       }
     }
-  return null;
+    return city1;
   }
 }
