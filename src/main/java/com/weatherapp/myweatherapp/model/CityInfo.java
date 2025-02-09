@@ -55,23 +55,23 @@ public class CityInfo {
       return currentTemperature;
     }
 
-    public String getsunrise() {
+    public String getSunrise() {
       return sunrise;
     }
 
-    public String getsunset() {
+    public String getSunset() {
       return sunset;
     }
 
-    public String getfeelslike() {
+    public String getFeelsLike() {
       return feelslike;
     }
 
-    public String gethumidity() {
+    public String getHumidity() {
       return humidity;
     }
 
-    public String getconditions() {
+    public String getConditions() {
       return conditions;
     }
   }

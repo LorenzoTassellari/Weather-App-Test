@@ -21,8 +21,8 @@ public class WeatherService {
 
   public int[] getDaylightHours(CityInfo city) {
 
-    String[] sunrise = city.getCurrentConditions().getsunrise().split(":");
-    String[] sunset = city.getCurrentConditions().getsunset().split(":");
+    String[] sunrise = city.getCurrentConditions().getSunrise().split(":");
+    String[] sunset = city.getCurrentConditions().getSunset().split(":");
     int[] daylightHours = new int[3];
 
     for (int i = 2; i > -1; i--) {
@@ -58,5 +58,14 @@ public class WeatherService {
       }
     }
     return city1;
+  }
+
+  public Boolean isRaining(CityInfo city) {
+    String conditions = city.getCurrentConditions().getConditions();
+    System.out.println(conditions);
+    if (conditions.contains("Rain")) {
+      return true;
+    }
+    return false;
   }
 }
