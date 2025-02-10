@@ -62,7 +62,6 @@ public class WeatherService {
 
   public Boolean isRaining(CityInfo city) {
     String conditions = city.getCurrentConditions().getConditions();
-    System.out.println(conditions);
     if (conditions.contains("Rain")) {
       return true;
     }

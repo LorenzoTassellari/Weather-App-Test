@@ -32,6 +32,7 @@ public class CityInfo {
   public List<Days> getDays() {
       return days;
   }
+
   public class CurrentConditions {
     @JsonProperty("temp")
     String currentTemperature;
@@ -73,6 +74,10 @@ public class CityInfo {
 
     public String getConditions() {
       return conditions;
+    }
+
+    public void setConditions(String cond) {
+      this.conditions = cond;
     }
   }
 
