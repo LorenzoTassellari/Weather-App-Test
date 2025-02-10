@@ -1,6 +1,5 @@
 package com.weatherapp.myweatherapp.service;
 import com.weatherapp.myweatherapp.model.CityInfo;
-import com.weatherapp.myweatherapp.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -98,15 +97,24 @@ class WeatherServiceTest {
   }
 
 
-/*
   @Test
   void testIsRaining_WithRain() {
+    CityInfo city = new CityInfo();
+    CityInfo.CurrentConditions conditions = city.new CurrentConditions();
+    conditions.setConditions("Rain");
+    city.setCurrentConditions(conditions);
+
+    Boolean result = weatherService.isRaining(city);
+
+    System.out.println("Conditions: " + conditions.getConditions());
+    System.out.println("Is it raining? " + result);
+    assertTrue(result);
     }
 
   @Test
   void testIsRaining_WithoutRain() {
     CityInfo city = new CityInfo();
-    CurrentConditions conditions = new CurrentConditions();
+    CityInfo.CurrentConditions conditions = city.new CurrentConditions();
     conditions.setConditions("Clear");
     city.setCurrentConditions(conditions);
 
@@ -120,8 +128,8 @@ class WeatherServiceTest {
   @Test
   void testIsRaining_WithMixedConditions() {
     CityInfo city = new CityInfo();
-    CurrentConditions conditions = new CurrentConditions();
-    conditions.setConditions("Partly Cloudy with Rain");
+    CityInfo.CurrentConditions conditions = city.new CurrentConditions();
+    conditions.setConditions("Rain, Overcast");
     city.setCurrentConditions(conditions);
 
     Boolean result = weatherService.isRaining(city);
@@ -148,5 +156,4 @@ class WeatherServiceTest {
       assertNotNull(isRaining);
     }
   }
-  */
 }

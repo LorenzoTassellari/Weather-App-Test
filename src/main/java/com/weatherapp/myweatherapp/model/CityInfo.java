@@ -33,7 +33,6 @@ public class CityInfo {
   public List<Days> getDays() {
       return days;
   }
-/*
   //setter methods for testing
   public void setAddress(String address) {
     this.address = address;
@@ -50,7 +49,6 @@ public class CityInfo {
   public void setDays(List<Days> days) {
       this.days = days;
   }
-*/
   public class CurrentConditions {
     @JsonProperty("temp")
     String currentTemperature;
@@ -94,7 +92,7 @@ public class CityInfo {
     public String getConditions() {
       return conditions;
     }
-/*
+    
     //setter methods for testing
     public void setCurrentTemperature(String currentTemperature) {
       this.currentTemperature = currentTemperature;
@@ -119,7 +117,6 @@ public class CityInfo {
     public void setConditions(String conditions) {
       this.conditions = conditions;
     }
-     */
   }
   static class Days {
 
