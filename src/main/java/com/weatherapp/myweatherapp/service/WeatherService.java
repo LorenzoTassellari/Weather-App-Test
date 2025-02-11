@@ -3,7 +3,6 @@ package com.weatherapp.myweatherapp.service;
 import com.weatherapp.myweatherapp.model.CityInfo;
 import com.weatherapp.myweatherapp.repository.VisualcrossingRepository;
 
-import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,10 +60,18 @@ public class WeatherService {
   }
 
   public Boolean isRaining(CityInfo city) {
-    String conditions = city.getCurrentConditions().getConditions();
-    if (conditions.contains("Rain")) {
-      return true;
+    return city.getCurrentConditions().getConditions().contains("Rain");
+  }
+
+  public String generateRainComparisonMessage(CityInfo ci1, CityInfo ci2, boolean ci1Rain, boolean ci2Rain) {
+    if (ci1Rain && ci2Rain) {
+        return "It's raining in both " + ci1.getAddress() + " and " + ci2.getAddress();
+    } else if (ci1Rain) {
+        return "It's currently raining in: " + ci1.getAddress();
+    } else if (ci2Rain) {
+        return "It's currently raining in: " + ci2.getAddress();
+    } else {
+        return "It's not raining in either city";
     }
-    return false;
   }
 }

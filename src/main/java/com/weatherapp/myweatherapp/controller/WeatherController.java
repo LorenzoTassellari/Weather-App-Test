@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.http.HttpStatus;
 
 @Controller
 public class WeatherController {
@@ -43,14 +42,7 @@ public class WeatherController {
       CityInfo ci2 = weatherService.forecastByCity(city2);
       boolean ci1Rain = weatherService.isRaining(ci1);
       boolean ci2Rain = weatherService.isRaining(ci2);
-      if (ci1Rain && ci2Rain) {
-        return ResponseEntity.ok("It's raining in both " + ci1.getAddress() + " and " + ci2.getAddress());
-      } else if (ci1Rain) {
-        return ResponseEntity.ok("It's currently raining in: " + ci1.getAddress());
-      } else if (ci2Rain) {
-        return ResponseEntity.ok("It's currently raining in: " + ci2.getAddress());
-      } else {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("It's not raining in either city");
-      }
-    }
+      String responseMessage = weatherService.generateRainComparisonMessage(ci1, ci2, ci1Rain, ci2Rain);
+      return ResponseEntity.ok(responseMessage);
+  }
 }
