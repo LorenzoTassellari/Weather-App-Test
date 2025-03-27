@@ -116,16 +116,13 @@ class WeatherServiceTest {
 
   @Test
   void testIsRaining_WithoutRain() {
-    // Arrange
     CityInfo city = new CityInfo();
     CurrentConditions conditions = new CurrentConditions();
     conditions.setConditions("Clear");
     city.setCurrentConditions(conditions);
 
-    // Act
     Boolean result = weatherService.isRaining(city);
 
-    // Assert
     System.out.println("Conditions: " + conditions.getConditions());
     System.out.println("Is it raining? " + result);
     assertFalse(result);
@@ -133,16 +130,13 @@ class WeatherServiceTest {
 
   @Test
   void testIsRaining_WithMixedConditions() {
-    // Arrange
     CityInfo city = new CityInfo();
     CurrentConditions conditions = new CurrentConditions();
     conditions.setConditions("Partly Cloudy with Rain");
     city.setCurrentConditions(conditions);
 
-    // Act
     Boolean result = weatherService.isRaining(city);
 
-    // Assert
     System.out.println("Conditions: " + conditions.getConditions());
     System.out.println("Is it raining? " + result);
     assertTrue(result);
@@ -155,16 +149,13 @@ class WeatherServiceTest {
     System.out.println("\nTesting real cities for rain...");
     
     for (String cityName : cities) {
-      // Get real weather data
       CityInfo city = weatherService.forecastByCity(cityName);
       Boolean isRaining = weatherService.isRaining(city);
       
-      // Print results
       System.out.println("\n" + cityName.toUpperCase());
       System.out.println("Conditions: " + city.getCurrentConditions().getConditions());
       System.out.println("Is it raining? " + isRaining);
       
-      // Basic validation
       assertNotNull(isRaining);
     }
   }
